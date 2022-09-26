@@ -1,0 +1,16 @@
+{
+  "name": "data-structures-n-algorithms",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "computer-science",
+    "data-structures",
+    "javascript"
+  ],
+  "author": "Eriksen Lezama",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
