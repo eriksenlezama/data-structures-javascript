@@ -61,6 +61,30 @@ const Stack = (function() {
 
       return stack
     }
+
+    toArray() {
+      if (stack.top) {
+        let currentNode = stack.top
+        const array = []
+
+        array.push(currentNode.value)
+
+        while (currentNode.next) {
+          currentNode = currentNode.next
+          array.unshift(currentNode.value)
+        }
+
+        return array
+      }
+
+      return null
+    }
+
+    toString() {
+      const array = this.toArray()
+
+      return array.toString()
+    }
   }
 
 })()
