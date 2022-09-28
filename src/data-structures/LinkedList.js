@@ -63,7 +63,6 @@ const LinkedList = (function () {
         const newNode = new Node(value, currentNode.next)
 
         currentNode.next = newNode
-
         linkedList.size += 1
       }
 
@@ -91,7 +90,6 @@ const LinkedList = (function () {
           linkedList.tail = currentNode
         }
 
-
         linkedList.size -= 1
       }
 
@@ -113,7 +111,7 @@ const LinkedList = (function () {
 
       linkedList.size -= 1
 
-      return linkedList
+      return head
     }
 
     deleteTail() {
