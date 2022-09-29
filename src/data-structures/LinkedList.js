@@ -4,7 +4,7 @@ class Node {
     this.next = next
   }
 }
-// TODO: add toString of values
+
 const LinkedList = (function () {
   const linkedList = {}
 
@@ -116,6 +116,30 @@ const LinkedList = (function () {
 
     deleteTail() {
       return this.delete(linkedList.size)
+    }
+
+    toArray() {
+      if (linkedList.head) {
+        let currentNode = linkedList.head
+        const array = []
+
+        array.push(currentNode.value)
+
+        while (currentNode.next) {
+          currentNode = currentNode.next
+          array.push(currentNode.value)
+        }
+
+        return array
+      }
+
+      return null
+    }
+
+    toString() {
+      const array = this.toArray()
+
+      return array.toString()
     }
   }
 
