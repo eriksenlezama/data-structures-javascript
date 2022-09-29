@@ -126,6 +126,30 @@ const DoublyLinkedList = (function () {
     deleteTail() {
       return this.delete(doublyLinkedList.size)
     }
+
+    toArray() {
+      if (doublyLinkedList.head) {
+        let currentNode = doublyLinkedList.head
+        const array = []
+
+        array.push(currentNode.value)
+
+        while (currentNode.next) {
+          currentNode = currentNode.next
+          array.push(currentNode.value)
+        }
+
+        return array
+      }
+
+      return null
+    }
+
+    toString() {
+      const array = this.toArray()
+
+      return array.toString()
+    }
   }
 
 })()
