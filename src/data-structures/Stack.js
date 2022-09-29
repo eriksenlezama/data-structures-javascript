@@ -6,7 +6,6 @@ class Node {
 }
 
 const Stack = (function() {
-  // TODO: add toString of stack values
   const stack = {}
 
   return class {
