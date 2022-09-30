@@ -46,7 +46,9 @@ const Stack = (function() {
     }
 
     peek() {
-      return stack.top
+      if (stack.top) return stack.top
+
+      return null
     }
 
     size() {
