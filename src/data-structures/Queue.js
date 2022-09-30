@@ -50,6 +50,20 @@ const Queue = (function() {
       return head
     }
 
+    isEmpty() {
+      return queue.head === null
+    }
+
+    peek() {
+      if (queue.head) return queue.head
+
+      return null
+    }
+
+    size() {
+      return queue.size
+    }
+
     toArray() {
       const array = []
 
