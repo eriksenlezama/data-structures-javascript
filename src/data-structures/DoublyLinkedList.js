@@ -5,8 +5,8 @@ class Node {
     this.prev = prev
   }
 }
-// TODO: add toString of values
-const DoublyLinkedList = (function () {
+
+export const DoublyLinkedList = (function () {
   const doublyLinkedList = {}
 
   return class {
@@ -153,5 +153,3 @@ const DoublyLinkedList = (function () {
   }
 
 })()
-
-const doublyLinkedList = new DoublyLinkedList()
