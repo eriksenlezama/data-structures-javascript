@@ -1,11 +1,6 @@
-class Node {
-  constructor(value, next = null) {
-    this.value = value
-    this.next = next
-  }
-}
+import { Node } from './Node.js'
 
-const Stack = (function() {
+export const Stack = (function() {
   const stack = {}
 
   return class {
@@ -89,6 +84,3 @@ const Stack = (function() {
   }
 
 })()
-
-
-const stack = new Stack()

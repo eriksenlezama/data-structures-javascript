@@ -1,11 +1,6 @@
-class Node {
-  constructor(value, next = null) {
-    this.value = value
-    this.next = next
-  }
-}
+import { Node } from './Node.js'
 
-const Queue = (function() {
+export const Queue = (function() {
   const queue = {}
 
   return class {
@@ -84,5 +79,3 @@ const Queue = (function() {
     }
   }
 })()
-
-const queue = new Queue()

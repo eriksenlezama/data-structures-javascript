@@ -1,11 +1,6 @@
-class Node {
-  constructor(value, next = null) {
-    this.value = value
-    this.next = next
-  }
-}
+import { Node } from './Node.js'
 
-const LinkedList = (function () {
+export const LinkedList = (function () {
   const linkedList = {}
 
   return class {
@@ -144,5 +139,3 @@ const LinkedList = (function () {
   }
 
 })()
-
-const linkedList = new LinkedList()
