@@ -42,7 +42,7 @@ export const LinkedList = (function () {
     }
 
     insert(value, index) {
-      if(index <= 0) {
+      if (index <= 0) {
         this.prepend(value)
       } else if (index >= linkedList.size) {
         this.append(value)
@@ -62,6 +62,28 @@ export const LinkedList = (function () {
       }
 
       return linkedList
+    }
+
+    find(value) {
+      if (!linkedList.head) return
+
+      let currentNode = linkedList.head
+
+      while (currentNode) {
+        if (typeof currentNode.value === 'object') {
+          if (currentNode.value.key === value) {
+            return currentNode
+          }
+        } else {
+          if (currentNode.value === value) {
+            return currentNode
+          }
+        }
+
+        currentNode = currentNode.next
+      }
+
+      return null
     }
 
     delete(index) {

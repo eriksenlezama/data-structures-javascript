@@ -76,6 +76,28 @@ export const DoublyLinkedList = (function () {
       return doublyLinkedList
     }
 
+    find(value) {
+      if (!doublyLinkedList.head) return
+
+      let currentNode = doublyLinkedList.head
+
+      while (currentNode) {
+        if (typeof currentNode.value === 'object') {
+          if (currentNode.value.key === value) {
+            return currentNode
+          }
+        } else {
+          if (currentNode.value === value) {
+            return currentNode
+          }
+        }
+
+        currentNode = currentNode.next
+      }
+
+      return null
+    }
+
     delete(index) {
       if (index <= 0) {
         this.deleteHead()
