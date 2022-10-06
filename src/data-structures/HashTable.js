@@ -1,30 +1,62 @@
-import {LinkedList} from './LinkedList.js'
-
 export const HashTable = (function () {
 
-  const hashTable = {}
+  const defaultSize = 71
+  const hashTable = new Array(defaultSize)
 
   return class {
-    constructor() {
-      // I chose a prime number less than 100 for the max size of the hast table.
-      hashTable.max_size = 71
-      hashTable.size = 0
-    }
-
     hash(key) {
-      const initialValue = 0
-      const index = Array.from(key).reduce((sum, val) => sum + val.charCodeAt(), initialValue)
+      let index = 0
+      for (let i = 0; i < key.length; i++) {
+        index += key.charCodeAt(i)
+      }
 
-      return index % hashTable.max_size
+      return index % defaultSize
     }
 
-    insert(key, value) {
-      const index = this.hash(key)
+    set(key, value) {
+      const hashedKey = this.hash(key)
 
-      if (!hashTable[index]) {
-        hashTable[index] = value
-        hashTable.size += 1
+      if (!hashTable[hashedKey]) {
+        hashTable[hashedKey] = {}
+        hashTable[hashedKey][key] = value
+      } else {
+        hashTable[hashedKey][key] = value
       }
+
+      return hashTable
+    }
+
+    delete(key) {
+      const hashedKey = this.hash(key)
+
+      if (!hashTable[hashedKey]) return null
+
+      if (Object.keys(hashTable[hashedKey]).includes(key)) {
+        delete hashTable[hashedKey][key]
+      }
+
+      if (Object.keys(hashTable[hashedKey]).length === 0) {
+        delete hashTable[hashedKey]
+      }
+
+      return hashTable
+    }
+
+    get(key) {
+      const hashedKey = this.hash(key)
+
+      if (!hashTable[hashedKey]) return null
+
+      return hashTable[hashedKey][key]
+    }
+
+    has(key) {
+      const hashedKey = this.hash(key)
+
+      if (!hashTable[hashedKey]) return false
+      if (!hashTable[hashedKey][key]) return false
+
+      return true
     }
   }
 
