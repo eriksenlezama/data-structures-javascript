@@ -94,6 +94,57 @@ export const Tree = (function() {
       }
     }
 
+    // print from left to right
+    printInOrder() {
+      const root = tree.root
+      if (!root.value) return null
+
+      const arrInOrder = []
+
+      const traverse = (node = root) => {
+        node.left && traverse(node.left)
+        arrInOrder.push(node.value)
+        node.right && traverse(node.right)
+      }
+
+      traverse()
+      return arrInOrder
+    }
+
+    // print from root through branches (left through right)
+    printPreOrder() {
+      const root = tree.root
+      if (!root.value) return null
+
+      const arrPreOrder = []
+
+      const traverse = (node = root) => {
+        arrPreOrder.push(node.value)
+        node.left && traverse(node.left)
+        node.right && traverse(node.right)
+      }
+
+      traverse()
+      return arrPreOrder
+    }
+
+    // print from leaves through root (left through right)
+    printPostOrder() {
+      const root = tree.root
+      if (!root.value) return null
+
+      const arrPostOrder = []
+
+      const traverse = (node = root) => {
+        node.left && traverse(node.left)
+        node.right && traverse(node.right)
+        arrPostOrder.push(node.value)
+      }
+
+      traverse()
+      return arrPostOrder
+    }
+
     delete(value) {
       let currentNode = tree.root
 
