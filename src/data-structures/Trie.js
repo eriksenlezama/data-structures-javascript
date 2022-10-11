@@ -56,5 +56,26 @@ export const Trie = (function () {
         return false
       }
     }
+
+    printWords() {
+      const words = []
+
+      const search = (node = trie.root, text = '') => {
+        if (node.children.size !== 0) {
+          for (let letter of node.children.keys()) {
+            search(node.children.get(letter), text.concat(letter))
+          }
+
+          if (node.isTerminal()) {
+            words.push(text)
+          }
+        } else {
+          text.length > 0 && words.push(text) // check empty
+          return
+        }
+      }
+      search()
+      return words.length > 0 && words // check empty
+    }
   }
 })()
