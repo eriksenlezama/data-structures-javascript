@@ -57,6 +57,33 @@ export const Trie = (function () {
       }
     }
 
+    delete(value, node = trie.root, initialValue = '') {
+      const { children } = node
+
+      if (!children.has(value.charAt(0))) return null
+
+      if (value.length === 1 && children.get(value.charAt(0)).isTerminal()) {
+        children.get(value.charAt(0)).unsetTerminal()
+
+        if (children.get(value.charAt(0)).children.size === 0) {
+          let parent = children.get(value.charAt(0)).parent
+          while (parent) {
+            if (parent.terminal || parent.children.size > 1) {
+              parent.children.delete(initialValue.charAt(initialValue.length - 1))
+              break
+            }
+            parent = parent.parent
+            initialValue = initialValue.substring(0, initialValue.length - 1)
+          }
+        }
+
+      } else {
+        this.delete(value.substring(1), children.get(value.charAt(0)), initialValue || value)
+      }
+
+      return trie
+    }
+
     printWords() {
       const words = []
 
